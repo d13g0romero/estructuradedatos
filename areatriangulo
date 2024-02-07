@@ -1,0 +1,31 @@
+/* Nombre: Diego Romero Perez
+   Fecha: 07-02-2023
+   Objetivo: Area del triángulo
+*/
+
+#include <iostream>
+using namespace std;
+
+float area(float a, float h);
+
+int main()
+{float base, altura;
+   cout<<"Ingresar la base: ";
+   do {
+       cin>>base;
+   } while (base<=0);
+    cout<<"Ingresar la altura: ";
+    do {
+        cin>>altura;
+    } while (altura<=0);
+    
+    cout<<"El area es: "<<area(base, altura);
+    
+    return 0;
+}
+
+float area(float a, float h) {
+    float aux;
+    aux=(a*h)/2;
+    return aux;
+}
