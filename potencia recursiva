@@ -1,0 +1,26 @@
+/* 
+   Nombre: Diego Romero Perez
+   Fecha: 21-02-2024
+   Potencia recursiva v1.0
+*/
+
+#include <iostream>
+using namespace std;
+
+int potencia(int x, int n);
+
+int main()
+{ int x, n;
+    cout<<"Digite la base: "; cin>>x;
+    cout<<"Digite el exponente: "; cin>>n;
+    cout<<"El resultado de la potencia es: "<<potencia(x, n);
+    return 0;
+}
+
+int potencia(int x, int n)
+{
+    if(n==0)
+       return 1;
+    else
+       return x * potencia(x, (n-1));
+}
