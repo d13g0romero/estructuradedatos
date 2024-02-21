@@ -1,0 +1,12 @@
+def potencia_recursiva(x, n):
+    if n==0:
+        return 1
+    else:
+        return x * potencia_recursiva(x, (n-1))
+
+print("Introduzca la base: ")
+x = int(input())
+print("Introduzca el exponente: ")
+n = int(input())
+z = potencia_recursiva(x, n)
+print(z)
