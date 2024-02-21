@@ -1,0 +1,26 @@
+/* 
+   Nombre: Diego Romero Perez
+   Fecha: 21-02-2024
+   Recursividad con factorial v1.0
+*/
+
+#include <iostream>
+using namespace std;
+
+int factorial(int n);
+
+int main()
+{
+    int n;
+    cout<<"Digite un número: "; cin>>n;
+    cout<<"El factorial de n es: "<<factorial(n);
+    return 0;
+}
+
+int factorial(int n)
+{
+    if (n==0)
+       return 1;
+    else
+       return n*factorial(n-1);
+}
