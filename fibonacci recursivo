@@ -1,0 +1,25 @@
+/* 
+   Nombre: Diego Romero Perez
+   Fecha: 21-02-2024
+   Código Fibonacci v1.0
+*/
+
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n);
+
+int main()
+{ int n;
+    cout<<"Introduzca el número de la serie Fibonacci: "; cin>>n;
+    cout<<"los numeros de la secuencia son: "<<fibonacci(n);
+    return 0;
+}
+
+int fibonacci(int n)
+{
+    if (n<=0)
+       return 1;
+    else
+       return fibonacci(n-1)+fibonacci(n-2);
+}
