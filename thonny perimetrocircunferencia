@@ -1,0 +1,4 @@
+def perimetro_circunferencia(r):
+    return 2 * 3.1416 * r
+z = perimetro_circunferencia(3)
+print(z)
