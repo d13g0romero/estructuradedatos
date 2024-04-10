@@ -1,0 +1,150 @@
+#pragma once
+#include "Nodo.h"
+class Cola {
+private:
+    Nodo* inicio;
+    Nodo* fin;
+
+public:
+    Cola();
+    ~Cola();
+    void Encolar();
+    void Desencolar();
+    bool ColaVacia();
+    bool ColaLlena();
+    void MostrarFrente();
+};
+
+#include <iostream>
+#include "Cola.h"
+using namespace std;
+Cola::Cola() {
+    inicio = NULL;
+    fin = NULL;
+}
+
+Cola::~Cola() {
+    while (inicio != nullptr) {
+        Nodo* temp = inicio;
+        inicio = inicio->puntero;
+        delete temp;
+    }
+}
+
+void Cola::Encolar() {
+    Nodo* Elemento = new Nodo;
+    if (inicio == nullptr) {
+        inicio = fin = Elemento;
+    }
+    else {
+        fin->puntero = Elemento;
+        fin = Elemento;
+    }
+
+    cout << "Codigo: "; cin >> Elemento->dato.Codigo;
+    cout << "Nombres: "; cin >> Elemento->dato.Nombre;
+    cout << "Carrera: "; cin >> Elemento->dato.Carrera;
+    cout << endl;
+}
+
+void Cola::Desencolar() {
+    if (ColaVacia()) {
+        cout << "La cola está vacía. No se puede desencolar." << endl;
+        return;
+    }
+
+    Nodo* temp = inicio;
+    cout << "Codigo: " << inicio->dato.Codigo << endl;
+    cout << "Nombres: " << inicio->dato.Nombre << endl;
+    cout << "Carrera: " << inicio->dato.Carrera << endl;
+    inicio = inicio->puntero;
+    delete temp;
+}
+
+bool Cola::ColaVacia() {
+    return inicio == nullptr;
+}
+
+bool Cola::ColaLlena() {
+    return false;
+}
+
+void Cola::MostrarFrente()
+{
+    if (ColaVacia()) {
+        cout << "La cola está vacía. No hay elementos en el frente." << endl;
+    }
+    else {
+        cout << "Frente de la cola:" << endl;
+        cout << "Codigo: " << inicio->dato.Codigo << endl;
+        cout << "Nombres: " << inicio->dato.Nombre << endl;
+        cout << "Carrera: " << inicio->dato.Carrera << endl;
+    }
+}
+
+#pragma once 
+#include "Dato.h"
+class Nodo {
+public:
+    Dato dato;
+    Nodo *puntero;
+
+    Nodo() {
+        puntero = NULL;
+    }
+};
+
+#pragma once 
+#include <string>
+using namespace std;
+class Dato {
+public:
+    double Codigo;
+    string Nombre;
+    string Carrera;
+    Dato() {
+        Codigo = 0;
+        Nombre = "Unknow";
+        Carrera = "Unknow";
+    }
+};
+
+#include <iostream>
+#include "Cola.h"
+using namespace std;
+int main() {
+    Cola cola;
+    int opc = 0;
+    do {
+        cout << "1. La cola esta vacia?" << endl;
+        cout << "2. Encolar" << endl;
+        cout << "3. Desencolar" << endl;
+        cout << "4. La cola esta llena?" << endl;
+        cout << "5. Mostrar el inicio de la cola" << endl;
+        cout << "0. Salir" << endl;
+        cout << "Opcion: "; cin >> opc;
+
+        switch (opc) {
+        case 1:
+            if (cola.ColaVacia())
+                cout << "La cola se encuentra vacia" << endl;
+            else
+                cout << "Existe elemento(s) dentro de la cola" << endl;
+            break;
+        case 2:
+            cola.Encolar();
+            break;
+        case 3:
+            cola.Desencolar();
+            break;
+        case 4:
+            if (cola.ColaLlena())
+                cout << "La cola está llena." << endl;
+            else
+                cout << "Existe memoria disponible para la cola." << endl;
+        case 5:
+            cola.MostrarFrente();
+        }
+    } while (opc != 0);
+    return 0;
+}
